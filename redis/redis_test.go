@@ -5,6 +5,7 @@ import (
 	"testing"
 
 	"github.com/garyburd/redigo/redis"
+	"github.com/stretchr/testify/assert"
 
 	"github.com/jbelmont/containerized-golang-and-vuejs/model"
 )
@@ -66,11 +67,21 @@ func TestGetHash(t *testing.T) {
 }
 
 func TestGetKeysWithPattern(t *testing.T) {
+	var user User
 	reply, err := GetKeys("user:*")
 	values, _ := redis.Strings(reply, err)
 	for _, val := range values {
 		hash, err := GetHashAll(val)
 		hashVal, _ := redis.StringMap(hash, err)
+		id, _ := strconv.Atoi(hashVal["id"])
+		user = User{
+			ID:        id,
+			FirstName: hashVal["firstname"],
+			LastName:  hashVal["lastname"],
+			Email:     hashVal["email"],
+			Gender:    hashVal["gender"],
+		}
+		assert.IsType(t, user.ID, 5)
 		if hashVal == nil {
 			t.Errorf("%v should have map values", hashVal)
 		}
