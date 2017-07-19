@@ -14,9 +14,9 @@ RUN go get gopkg.in/mgo.v2
 RUN go get github.com/keimoon/gore
 RUN go get github.com/gorilla/mux
 RUN go get github.com/gorilla/handlers
-RUN go get github.com/jbelmont/docker-workshop/routes
-RUN go get github.com/jbelmont/docker-workshop/handlers
-RUN go get github.com/jbelmont/docker-workshop/model
-RUN go get github.com/jbelmont/docker-workshop/redis
+RUN go get github.com/jbelmont/containerized-golang-and-vuejs/routes
+RUN go get github.com/jbelmont/containerized-golang-and-vuejs/handlers
+RUN go get github.com/jbelmont/containerized-golang-and-vuejs/model
+RUN go get github.com/jbelmont/containerized-golang-and-vuejs/redis
 
 RUN go build

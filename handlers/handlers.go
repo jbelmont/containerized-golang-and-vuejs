@@ -3,12 +3,9 @@ package handlers
 import (
 	"encoding/json"
 	"fmt"
-	"log"
 	"net/http"
-	"strconv"
 
-	"github.com/jbelmont/docker-workshop/model"
-	"github.com/jbelmont/docker-workshop/redis"
+	"github.com/jbelmont/containerized-golang-and-vuejs/model"
 )
 
 // UsersIndex returns index page with users
@@ -30,31 +27,8 @@ func GetUsers(w http.ResponseWriter, r *http.Request) {
 	var users []model.Users
 	var payload []byte
 	var err error
-	reply, err := redis.GetKeys("user:*")
-	if err != nil {
-		users = model.GetUsers()
-		payload, err = json.Marshal(users)
-	} else {
-		users2, _ := reply.Array()
-		for _, k := range users2 {
-			key, _ := k.String()
-			rep, _ := redis.GetHashAll(key)
-			m, err := rep.Map()
-			if err != nil {
-				log.Fatal("something went wrong")
-			}
-			id, _ := strconv.Atoi(m["id"])
-			user := model.Users{
-				ID:        id,
-				FirstName: m["firstname"],
-				LastName:  m["lastname"],
-				Email:     m["email"],
-				Gender:    m["gender"],
-			}
-			users = append(users, user)
-		}
-		payload, err = json.Marshal(users)
-	}
+	users = model.GetUsers()
+	payload, err = json.Marshal(users)
 
 	if err != nil {
 		fmt.Println(err)

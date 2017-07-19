@@ -48,7 +48,7 @@ module.exports = {
     historyApiFallback: true,
     noInfo: true,
     proxy: {
-      '/api': 'http://localhost:3001'
+      '/api': 'http://backend:3001'
     }
   },
   performance: {
@@ -59,7 +59,6 @@ module.exports = {
 
 if (process.env.NODE_ENV === 'production') {
   module.exports.devtool = '#source-map'
-  // http://vue-loader.vuejs.org/en/workflow/production.html
   module.exports.plugins = (module.exports.plugins || []).concat([
     new webpack.DefinePlugin({
       'process.env': {

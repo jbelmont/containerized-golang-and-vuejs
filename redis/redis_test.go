@@ -4,7 +4,9 @@ import (
 	"strconv"
 	"testing"
 
-	"github.com/jbelmont/docker-workshop/model"
+	"github.com/garyburd/redigo/redis"
+
+	"github.com/jbelmont/containerized-golang-and-vuejs/model"
 )
 
 func TestSetKey(t *testing.T) {
@@ -16,7 +18,7 @@ func TestSetKey(t *testing.T) {
 		t.Errorf("something wrong happened")
 	}
 	expected := "[billy john will]"
-	actual, _ := reply.String()
+	actual, _ := redis.String(reply, err)
 	if actual != expected {
 		t.Errorf("should return %v", expected)
 	}
@@ -42,21 +44,35 @@ func TestGetHash(t *testing.T) {
 	if err != nil {
 		t.Error("should be nil")
 	}
-	_, err2 := reply.Map()
-	if err2 != nil {
-		t.Error("error converting")
+	strMap, _ := redis.StringMap(reply, err)
+	testMap := map[string]string{
+		"id":        "2",
+		"firstname": "Sean",
+		"lastname":  "Medina",
+		"email":     "smedina1@addthis.com",
+		"gender":    "Male",
+	}
+	if strMap["id"] != testMap["id"] {
+		t.Errorf("%v and %v do not match", strMap["id"], testMap["id"])
+	} else if strMap["firstname"] != testMap["firstname"] {
+		t.Errorf("%v and %v do not match", strMap["firstname"], testMap["firstname"])
+	} else if strMap["lastname"] != testMap["lastname"] {
+		t.Errorf("%v and %v do not match", strMap["lastname"], testMap["lastname"])
+	} else if strMap["email"] != testMap["email"] {
+		t.Errorf("%v and %v do not match", strMap["email"], testMap["email"])
+	} else if strMap["gender"] != testMap["gender"] {
+		t.Errorf("%v and %v do not match", strMap["gender"], testMap["gender"])
 	}
 }
 
 func TestGetKeysWithPattern(t *testing.T) {
-	reply, _ := GetKeys("user:*")
-	users, _ := reply.Array()
-	for _, k := range users {
-		key, _ := k.String()
-		rep, _ := GetHashAll(key)
-		_, err := rep.Map()
-		if err != nil {
-			t.Error("something went wrong")
+	reply, err := GetKeys("user:*")
+	values, _ := redis.Strings(reply, err)
+	for _, val := range values {
+		hash, err := GetHashAll(val)
+		hashVal, _ := redis.StringMap(hash, err)
+		if hashVal == nil {
+			t.Errorf("%v should have map values", hashVal)
 		}
 	}
 }

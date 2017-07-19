@@ -1,5 +1,5 @@
 <template>
-  <div class="docker-container">
+  <div class="containerized-golang-and-vuejs">
     <div class="navbar-component">
       <!-- Class `area` is a container -->
       <div class="navbar area">

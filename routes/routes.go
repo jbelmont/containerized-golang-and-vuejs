@@ -7,7 +7,7 @@ import (
 
 	"github.com/gorilla/mux"
 
-	"github.com/jbelmont/docker-workshop/handlers"
+	"github.com/jbelmont/containerized-golang-and-vuejs/handlers"
 )
 
 type Route struct {

@@ -1,14 +1,14 @@
 {
-  "name": "docker-workshop",
+  "name": "containerized-golang-and-vuejs",
   "version": "1.0.0",
   "main": "index.js",
-  "repository": "https://github.com/jbelmont/docker-workshop.git",
+  "repository": "https://github.com/jbelmont/containerized-golang-and-vuejs.git",
   "author": "Jean-Marcel Belmont <marcelbelmont@gmail.com>",
   "license": "MIT",
   "scripts": {
-    "webpack": "cross-env NODE_ENV=development webpack-dev-server --open --hot",
-    "webpack:docker": "cross-env NODE_ENV=development webpack-dev-server --hot --inline --progress --host 0.0.0.0",
-    "build:server": "cross-env NODE_ENV=production webpack --progress --hide-modules",
+    "webpack": "NODE_ENV=development webpack-dev-server --open --hot",
+    "webpack:docker": "webpack-dev-server --progress --colors -d --hot --inline --host=0.0.0.0 --port 8080",
+    "build:server": "NODE_ENV=production webpack --progress --hide-modules",
     "build": "docker-compose build",
     "lint": "eslint --ext .js .",
     "lint:fix": "eslint --fix --ext .js .",
@@ -23,7 +23,7 @@
     "docs:prepare": "gitbook install",
     "docs:build": "npm run docs:prepare && rm -rf _book && gitbook build",
     "docs:watch": "npm run docs:prepare && gitbook serve",
-    "docs:publish": "npm run docs:build && cd _book && git init && git commit --allow-empty -m 'Update docs' && git checkout -b gh-pages && touch .nojekyll && git add . && git commit -am 'Update docs' && git push git@github.com:jbelmont/docker-workshop.git gh-pages --force"
+    "docs:publish": "npm run docs:build && cd _book && git init && git commit --allow-empty -m 'Update docs' && git checkout -b gh-pages && touch .nojekyll && git add . && git commit -am 'Update docs' && git push git@github.com:jbelmont/containerized-golang-and-vuejs.git gh-pages --force"
   },
   "devDependencies": {
     "autoprefixer": "^7.1.1",
