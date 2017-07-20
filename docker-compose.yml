@@ -36,7 +36,7 @@ services:
       /bin/sh -c "./node_modules/.bin/ava test/unit/*.js"
   testgo:
     image: golang:1.8.3
-    command: go test ./...
+    command: /bin/sh -c "go test"
   backend:
     build:
       context: .

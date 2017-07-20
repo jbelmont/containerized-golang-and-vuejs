@@ -17,6 +17,8 @@
     "dev": "docker-compose up frontend backend db redis",
     "dev:server": "npm run go & npm run webpack",
     "dev:docker": "npm run webpack:docker",
+    "test:go": "docker-compose up testgo",
+    "test": "docker-compose up test",
     "remove:containers": "docker-compose rm -f",
     "show:containers": "docker-compose ps",
     "stop:containers": "docker-compose stop",

@@ -1,7 +1,6 @@
 package main
 
 import (
-	"log"
 	"net/http"
 	"os"
 	"strconv"
@@ -66,5 +65,5 @@ func main() {
 	context := model.MongoSetup()
 	defer context.Close()
 	router := getRouter()
-	log.Fatal(http.ListenAndServe(":3001", router))
+	http.ListenAndServeTLS(":3001", "cert.pem", "key.pem", router)
 }
