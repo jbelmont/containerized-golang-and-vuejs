@@ -41,7 +41,7 @@ services:
     build:
       context: .
       dockerfile: Dockerfile-go
-    command: go run main.go
+    command: go run main.go data.go
     volumes:
       - .:/var/www/app/:rw
     ports:

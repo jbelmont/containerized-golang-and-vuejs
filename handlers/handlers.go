@@ -78,11 +78,15 @@ func GetUsers(w http.ResponseWriter, r *http.Request) {
 
 // AddUser add a new user to database
 func AddUser(w http.ResponseWriter, r *http.Request) {
-	payload, err := json.Marshal([]string{
-		"hey", "whats", "up",
-	})
-	if err != nil {
-		fmt.Println("something went wrong")
+	var u User
+	if r.Body == nil {
+		http.Error(w, "Please send a request body", 400)
+		return
 	}
-	w.Write(payload)
+	err := json.NewDecoder(r.Body).Decode(&u)
+	if err != nil {
+		http.Error(w, err.Error(), 400)
+		return
+	}
+	fmt.Println(w)
 }

@@ -4,6 +4,8 @@
 *.so
 *.dylib
 
+# Binary for this repo
+/containerized-golang-and-vuejs
 # Test binary, build with `go test -c`
 *.test
 
