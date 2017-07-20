@@ -6,8 +6,15 @@
 
 # Binary for this repo
 /containerized-golang-and-vuejs
+
 # Test binary, build with `go test -c`
 *.test
+
+# Cert file
+cert.pem
+
+# Key file
+key.pem
 
 # Output of the go coverage tool, specifically when used with LiteIDE
 *.out
