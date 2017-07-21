@@ -78,7 +78,7 @@ func GetUsers(w http.ResponseWriter, r *http.Request) {
 
 // AddUser add a new user to database
 func AddUser(w http.ResponseWriter, r *http.Request) {
-	var u User
+	var u model.UserModel
 	if r.Body == nil {
 		http.Error(w, "Please send a request body", 400)
 		return
@@ -88,5 +88,30 @@ func AddUser(w http.ResponseWriter, r *http.Request) {
 		http.Error(w, err.Error(), 400)
 		return
 	}
-	fmt.Println(w)
+	userModel := model.UserModel{
+		ID:        u.ID,
+		FirstName: u.FirstName,
+		LastName:  u.LastName,
+		Email:     u.Email,
+		Gender:    u.Gender,
+	}
+	context := model.GetContext()
+	c := context.DBCollection()
+	err2 := c.Insert(&userModel)
+	if err2 != nil {
+		log.Fatal("error saving user")
+		return
+	}
+	code := struct {
+		StatusCode int
+	}{
+		200,
+	}
+	payload, err3 := json.Marshal(code)
+	if err3 != nil {
+		log.Fatal("Something went wrong marshalling")
+	}
+	w.Header().Set("Content-Type", "application/json")
+	w.WriteHeader(http.StatusOK)
+	w.Write(payload)
 }
