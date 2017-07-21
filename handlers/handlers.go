@@ -8,6 +8,8 @@ import (
 	"os"
 	"strconv"
 
+	"gopkg.in/mgo.v2/bson"
+
 	"github.com/garyburd/redigo/redis"
 	"github.com/jbelmont/containerized-golang-and-vuejs/model"
 )
@@ -109,6 +111,27 @@ func AddUser(w http.ResponseWriter, r *http.Request) {
 	}
 	payload, err3 := json.Marshal(code)
 	if err3 != nil {
+		log.Fatal("Something went wrong marshalling")
+	}
+	w.Header().Set("Content-Type", "application/json")
+	w.WriteHeader(http.StatusOK)
+	w.Write(payload)
+}
+
+// GetUserByID returns a user from mongo
+func GetUserByID(w http.ResponseWriter, r *http.Request) {
+	var id map[string]string
+	err := json.NewDecoder(r.Body).Decode(id)
+	if err != nil {
+		http.Error(w, err.Error(), 400)
+		return
+	}
+	var result model.UserModel
+	context := model.GetContext()
+	c := context.DBCollection()
+	user := c.Find(bson.M{"id": id["id"]}).All(&result)
+	payload, err2 := json.Marshal(user)
+	if err2 != nil {
 		log.Fatal("Something went wrong marshalling")
 	}
 	w.Header().Set("Content-Type", "application/json")
