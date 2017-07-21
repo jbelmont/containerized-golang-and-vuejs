@@ -68,4 +68,10 @@ var routes = Routes{
 		"AddUser",
 		handlers.AddUser,
 	},
+	Route{
+		"GET",
+		"/addUser",
+		"AddUser",
+		handlers.AddUser,
+	},
 }
