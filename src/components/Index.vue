@@ -48,7 +48,7 @@
 </template>
 
 <script>
-import * as constants from '../constants'
+import constants from '../constants'
 const {
   DASHBOARD,
   USERS,
