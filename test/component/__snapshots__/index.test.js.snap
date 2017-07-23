@@ -1,7 +1,0 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
-
-exports[`Rendering the Index Component 1`] = `
-Object {
-  "$el": undefined,
-}
-`;

@@ -33,6 +33,7 @@
     "babel-core": "^6.0.0",
     "babel-eslint": "^7.2.3",
     "babel-loader": "^6.0.0",
+    "babel-plugin-istanbul": "^4.1.4",
     "babel-preset-env": "^1.5.1",
     "babel-preset-stage-2": "^6.24.1",
     "browser-env": "^3.1.0",

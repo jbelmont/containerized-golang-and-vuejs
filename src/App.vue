@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <h2>Docker Workshop</h2>
+    <h2>Containerized Golang and Vuejs</h2>
     <router-view></router-view>
   </div>
 </template>
