@@ -1,22 +1,9 @@
 <template>
   <div class="containerized-golang-and-vuejs">
     <div class="navbar-component">
-      <!-- Class `area` is a container -->
       <div class="navbar area">
-        <!-- Logo -->
+        <add-user :addUserLabel="ADD_USER" @addUserEvent></add-user>
         <a href="#" class="dashboard">{{DASHBOARD}}</a>
-        <!-- List of links -->
-        <nav role="navigation" id="navigation" class="list">
-          <a href="#" class="item -link">{{USERS}}</a>
-          <a href="#" class="item -link">{{SETTINGS}}</a>
-          <a href="#" class="item -link">{{PROFILE}}</a>
-          <span class="item"><i class="fa fa-search"></i></span>
-        </nav>
-        <!-- Button to toggle the display menu  -->
-        <button data-collapse data-target="#navigation" class="toggle">
-          <!-- Hamburger icon -->
-          <span class="icon"></span>
-        </button>
       </div>
     </div>
     <div class="users-area">
@@ -48,13 +35,13 @@
 </template>
 
 <script>
+import AddUser from './AddUser.vue'
 import constants from '../constants'
+import { mapState, mapGetters, store } from 'vuex'
 const {
   DASHBOARD,
-  USERS,
-  SETTINGS,
-  PROFILE,
   ID,
+  ADD_USER,
   FIRST_NAME,
   LAST_NAME,
   GENDER,
@@ -64,14 +51,15 @@ const {
 
 export default {
   name: 'index',
+  components: {
+    AddUser
+  },
   data () {
     return {
       users: [],
       DASHBOARD,
-      USERS,
-      SETTINGS,
-      PROFILE,
       ID,
+      ADD_USER,
       FIRST_NAME,
       LAST_NAME,
       GENDER,
@@ -86,12 +74,21 @@ export default {
     getUsers: function () {
       this.$http.get('api/v1/users').then(function (data) {
         this.users = data.body
+        console.log(store)
       }, function (err) {
         console.error(err)
       })
     },
+    addUser: function (event) {
+      console.log('addUser Fired', event)
+    },
     removeUser: function (event) {
       console.log(event)
+    }
+  },
+  events: {
+    addUserEvent: function (event) {
+      console.log('addUserEvent in parent fired', event)
     }
   }
 }
@@ -140,7 +137,8 @@ a {
   background-color: $navbar-background;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.16), 0 2px 10px rgba(0, 0, 0, 0.12);
 
-  & > .navbar {
+  & > .navbar.area {
+    align-items: center;
     justify-content: space-between;
   }
 }
@@ -154,11 +152,20 @@ td, th {
 }
 
 .navbar {
+  .add__user-btn {
+    justify-content: flex-start;
+    align-items: flex-start;
+    cursor: pointer;
+  }
+
   & > .dashboard {
-    display: block;
-    font-size: 16px;
+    display: flex;
+    font-size: 22px;
     color: #777;
     margin: round(($navbar-height - 20) / 2);
+    justify-content: center;
+    align-items: center;
+    cursor: default;
   }
 
   // Toggle button

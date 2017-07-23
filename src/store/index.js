@@ -5,5 +5,8 @@ import * as actions from './actions'
 Vue.use(Vuex)
 
 export default new Vuex.Store({
+  state: {
+    users: []
+  },
   actions
 })

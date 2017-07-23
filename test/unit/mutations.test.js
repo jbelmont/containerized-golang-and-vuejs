@@ -2,16 +2,47 @@
 
 const test = require('ava')
 
-const mutations = require('../../src/store/mutations')
+const mutations = require('../../src/store/mutations').default
 
-test('mutations should render proper labels', t => {
-  t.plan(3)
-  const expectedLabel = [
-    'REMOVE_USER',
-    'ADD_USER',
-    'EDIT_USER'
+test('addUser should add User to state', t => {
+  const state = {
+    users: [
+      {
+        'id': 1,
+        'first_name': 'John',
+        'last_name': 'Rambo',
+        'email': 'john.rambo@badass.net',
+        'gender': 'Male'
+      }
+    ]
+  }
+  const user = {
+    'id': 2,
+    'firstname': 'Diana',
+    'lastname': 'Prince',
+    'email': 'wonderwoman@messyouup.com',
+    'gender': 'Female'
+  }
+  const args = {
+    state,
+    user
+  }
+  const actual = mutations.addUser(args)
+  const expected = [
+    {
+      id: 1,
+      first_name: 'John',
+      last_name: 'Rambo',
+      email: 'john.rambo@badass.net',
+      gender: 'Male'
+    },
+    {
+      id: 2,
+      firstname: 'Diana',
+      lastname: 'Prince',
+      email: 'wonderwoman@messyouup.com',
+      gender: 'Female'
+    }
   ]
-  Object.keys(mutations.default).map((label, index, array) => {
-    t.is(label, expectedLabel[index])
-  })
+  t.deepEqual(actual.users, expected)
 })
