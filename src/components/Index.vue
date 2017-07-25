@@ -63,14 +63,14 @@
           </tr>
         </thead>
         <tbody>
-          <tr v-for="user in users"
+          <tr v-for="(user, index) in users"
               v-bind:key="user.id">
             <td>{{ user.id }}</td>
             <td>{{ user.first_name }}</td>
             <td>{{ user.last_name }}</td>
             <td>{{ user.gender }}</td>
             <td>{{ user.email }}</td>
-            <td><button class="btn btn-danger" :data-id=user.id v-on:click="removeUser">{{REMOVE_USER}}</button></td>
+            <td><button class="btn btn-danger" :data-index=index :data-id=user.id v-on:click="removeUser">{{REMOVE_USER}}</button></td>
           </tr>
         </tbody>
       </table>
@@ -171,8 +171,9 @@ export default {
     },
     removeUser: function (event) {
       const body = {
-        id: event.currentTarget.dataset["id"]
+        id: Number(event.currentTarget.dataset["id"])
       }
+      const index = event.currentTarget.dataset["index"]
       const options = {
         headers: {
           'Accept': 'application/json',
@@ -181,7 +182,11 @@ export default {
       }
       this.$http.post('/api/v1/removeUser', body, options)
       .then(function() {
-        console.log('deleted this joker')
+        const users3 = [
+          ...this.users.slice(0, index - 1),
+          ...this.users.slice(index, this.users.length - 1)
+        ]
+        this.users = users3
       }.bind(this))
     }
   }
