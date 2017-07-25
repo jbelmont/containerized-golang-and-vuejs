@@ -148,12 +148,13 @@ func GetUserByID(w http.ResponseWriter, r *http.Request) {
 // DeleteUserByID deletes a user by id
 func DeleteUserByID(w http.ResponseWriter, r *http.Request) {
 	type Payload struct {
-		ID string
+		ID int `json:"id"`
 	}
 	var payload Payload
 	err := json.NewDecoder(r.Body).Decode(&payload)
+	fmt.Println(payload)
 	if err != nil {
-		http.Error(w, err.Error(), 400)
+		http.Error(w, err.Error(), 500)
 		return
 	}
 	context := model.GetContext()
@@ -164,7 +165,7 @@ func DeleteUserByID(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 	connect := Connect()
-	key := "user:" + payload.ID
+	key := "user:" + strconv.Itoa(payload.ID)
 	_, err3 := connect.Do("DEL", key)
 	if err3 != nil {
 		http.Error(w, err3.Error(), 500)
