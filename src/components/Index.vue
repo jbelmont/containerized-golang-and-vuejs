@@ -148,21 +148,42 @@ export default {
     },
     addingUser: function () {
       this.show = false
-      const newUser = {
-        id: document.getElementById('newUserId').value,
-        firstName: document.getElementById('newUserFirstName').value,
-        lastName: document.getElementById('newUserLastName').value,
+      const addUser = {
+        id: Number(document.getElementById('newUserId').value),
+        first_name: document.getElementById('newUserFirstName').value,
+        last_name: document.getElementById('newUserLastName').value,
         gender: document.getElementById('newUserGender').value,
-        email: document.getElementById('newUserEmail').value,
-        http: this.$http
+        email: document.getElementById('newUserEmail').value
       }
-      this.$store.dispatch('newUser', newUser)
+      const options = {
+        headers: {
+          'Accept': 'application/json',
+          'Content-Type': 'application/json'
+        }
+      }
+      this.$http.post('/api/v1/addUser', addUser, options)
+      .then(function() {
+        addUser["id"] = addUser["id"].toString()
+        const users2 = this.users
+        users2.push(addUser)
+        this.users = users2
+      }.bind(this))
     },
-    ...mapActions([
-      'getAllUsers',
-      'removeUser',
-      'newUser'
-    ])
+    removeUser: function (event) {
+      const body = {
+        id: event.currentTarget.dataset["id"]
+      }
+      const options = {
+        headers: {
+          'Accept': 'application/json',
+          'Content-Type': 'application/json'
+        }
+      }
+      this.$http.post('/api/v1/removeUser', body, options)
+      .then(function() {
+        console.log('deleted this joker')
+      }.bind(this))
+    }
   }
 }
 </script>

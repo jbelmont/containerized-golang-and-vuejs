@@ -11,7 +11,9 @@ export const newUser = ({ commit }, user) => {
       'Content-Type': 'application/json'
     }
   }
-  axios.post('/api/v1/addUser', user, options)
+  this.$http = user.http
+  delete user.http
+  this.$http.post('/api/v1/addUser', user, options)
   .then(() => {
     commit(types.NEW_USER, user)
   })

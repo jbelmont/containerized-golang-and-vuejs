@@ -144,3 +144,43 @@ func GetUserByID(w http.ResponseWriter, r *http.Request) {
 	w.WriteHeader(http.StatusOK)
 	w.Write(payload)
 }
+
+// DeleteUserByID deletes a user by id
+func DeleteUserByID(w http.ResponseWriter, r *http.Request) {
+	type Payload struct {
+		ID string
+	}
+	var payload Payload
+	err := json.NewDecoder(r.Body).Decode(&payload)
+	if err != nil {
+		http.Error(w, err.Error(), 400)
+		return
+	}
+	context := model.GetContext()
+	c := context.DBCollection()
+	err2 := c.Remove(bson.M{"id": payload.ID})
+	if err2 != nil {
+		http.Error(w, err2.Error(), 500)
+		return
+	}
+	connect := Connect()
+	key := "user:" + payload.ID
+	_, err3 := connect.Do("DEL", key)
+	if err3 != nil {
+		http.Error(w, err3.Error(), 500)
+		return
+	}
+	code := struct {
+		StatusCode int
+	}{
+		204,
+	}
+	payload2, err4 := json.Marshal(code)
+	if err4 != nil {
+		http.Error(w, err4.Error(), 500)
+		return
+	}
+	w.Header().Set("Content-Type", "application/json")
+	w.WriteHeader(http.StatusOK)
+	w.Write(payload2)
+}

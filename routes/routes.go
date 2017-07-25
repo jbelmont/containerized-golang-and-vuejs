@@ -69,9 +69,9 @@ var routes = Routes{
 		handlers.AddUser,
 	},
 	Route{
-		"GET",
-		"/addUser",
-		"AddUser",
-		handlers.AddUser,
+		"POST",
+		"/removeUser",
+		"RemoveUser",
+		handlers.DeleteUserByID,
 	},
 }
