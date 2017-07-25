@@ -2,7 +2,51 @@
   <div class="containerized-golang-and-vuejs">
     <div class="navbar-component">
       <div class="navbar area">
-        <add-user :addUserLabel="ADD_USER" @addUserEvent></add-user>
+        <add-user :addUserLabel="ADD_USER" v-on:showPopover="showPopover"></add-user>
+        <div class="modal-mask" v-show="show" transition="modal">
+          <div class="modal-wrapper">
+            <div class="modal-container">
+
+              <div class="modal-header">
+                <slot name="header">
+                  <h4>{{ADD_A_NEW_USER_LABEL}}</h4>
+                </slot>
+              </div>
+
+              <div class="modal-body">
+                <slot name="body">
+                  <div class="form-group validate has-error">
+                    <label class="control-label">{{ID_LABEL}}</label>
+                    <input id="newUserId" class="form-control" type="text" title=" (required)" required="">
+                  </div>
+                  <div class="form-group validate has-error">
+                    <label class="control-label">{{FIRSTNAME_LABEL}}</label>
+                    <input id="newUserFirstName" class="form-control" type="text" title=" (required)" required="">
+                  </div>
+                  <div class="form-group validate has-error">
+                    <label class="control-label">{{LASTNAME_LABEL}}</label>
+                    <input id="newUserLastName" class="form-control" type="text" title=" (required)" required="">
+                  </div>
+                  <div class="form-group validate has-error">
+                    <label class="control-label">{{GENDER_LABEL}}</label>
+                    <input id="newUserGender" class="form-control" type="text" title=" (required)" required="">
+                  </div>
+                  <div class="form-group validate has-error">
+                    <label class="control-label">{{EMAIL_LABEL}}</label>
+                    <input id="newUserEmail" class="form-control" type="text" title=" (required)" required="">
+                  </div>
+                </slot>
+              </div>
+
+              <div class="modal-action">
+                <slot name="action">
+                  <input class="btn btn-primary" type="button" @click="show = false" value="Close">
+                  <input class="btn btn-primary" type="button" @click="addingUser" value="Add a User">
+                </slot>
+              </div>
+            </div>
+          </div>
+        </div>
         <a href="#" class="dashboard">{{DASHBOARD}}</a>
       </div>
     </div>
@@ -26,7 +70,7 @@
             <td>{{ user.last_name }}</td>
             <td>{{ user.gender }}</td>
             <td>{{ user.email }}</td>
-            <td><button :data-id=user.id v-on:click="removeUser">{{REMOVE_USER}}</button></td>
+            <td><button class="btn btn-danger" :data-id=user.id v-on:click="removeUser">{{REMOVE_USER}}</button></td>
           </tr>
         </tbody>
       </table>
@@ -37,7 +81,7 @@
 <script>
 import AddUser from './AddUser.vue'
 import constants from '../constants'
-import { mapState, mapGetters, store } from 'vuex'
+import { mapState, mapGetters, mapActions, store } from 'vuex'
 const {
   DASHBOARD,
   ID,
@@ -46,7 +90,13 @@ const {
   LAST_NAME,
   GENDER,
   EMAIL,
-  REMOVE_USER
+  REMOVE_USER,
+  ID_LABEL,
+  FIRSTNAME_LABEL,
+  LASTNAME_LABEL,
+  GENDER_LABEL,
+  EMAIL_LABEL,
+  ADD_A_NEW_USER_LABEL
 } = constants
 
 export default {
@@ -57,6 +107,7 @@ export default {
   data () {
     return {
       users: [],
+      show: false,
       DASHBOARD,
       ID,
       ADD_USER,
@@ -64,7 +115,13 @@ export default {
       LAST_NAME,
       GENDER,
       EMAIL,
-      REMOVE_USER
+      REMOVE_USER,
+      ID_LABEL,
+      FIRSTNAME_LABEL,
+      LASTNAME_LABEL,
+      GENDER_LABEL,
+      EMAIL_LABEL,
+      ADD_A_NEW_USER_LABEL
     }
   },
   mounted: function () {
@@ -74,22 +131,38 @@ export default {
     getUsers: function () {
       this.$http.get('api/v1/users').then(function (data) {
         this.users = data.body
-        console.log(store)
       }, function (err) {
         console.error(err)
       })
     },
-    addUser: function (event) {
-      console.log('addUser Fired', event)
+    resetFields: function () {
+      document.getElementById('newUserId').value = ''
+      document.getElementById('newUserFirstName').value = ''
+      document.getElementById('newUserLastName').value = ''
+      document.getElementById('newUserGender').value = ''
+      document.getElementById('newUserEmail').value = ''
     },
-    removeUser: function (event) {
-      console.log(event)
-    }
-  },
-  events: {
-    addUserEvent: function (event) {
-      console.log('addUserEvent in parent fired', event)
-    }
+    showPopover: function () {
+      this.resetFields()
+      this.show = true
+    },
+    addingUser: function () {
+      this.show = false
+      const newUser = {
+        id: document.getElementById('newUserId').value,
+        firstName: document.getElementById('newUserFirstName').value,
+        lastName: document.getElementById('newUserLastName').value,
+        gender: document.getElementById('newUserGender').value,
+        email: document.getElementById('newUserEmail').value,
+        http: this.$http
+      }
+      this.$store.dispatch('newUser', newUser)
+    },
+    ...mapActions([
+      'getAllUsers',
+      'removeUser',
+      'newUser'
+    ])
   }
 }
 </script>
@@ -270,5 +343,120 @@ td, th {
       border-bottom-color: $navbar-item-active-border;
     }
   }
+}
+
+.modal-mask {
+  position: fixed;
+  z-index: 9998;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, .5);
+  display: table;
+  transition: opacity .3s ease;
+}
+
+.modal-wrapper {
+  display: table-cell;
+  vertical-align: middle;
+}
+
+.modal-container {
+  width: 60%;
+  margin: 0px auto;
+  padding: 30px;
+  background-color: #fff;
+  border-radius: 2px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, .33);
+  transition: all .3s ease;
+  font-family: Helvetica, Arial, sans-serif;
+}
+
+.modal-header h3 {
+  margin-top: 0;
+  color: #42b983;
+}
+
+.modal-body {
+  margin: 20px 0;
+}
+
+.modal-default-button {
+  float: right;
+}
+
+.modal-enter, .modal-leave {
+  opacity: 0;
+}
+
+.modal-enter .modal-container,
+.modal-leave .modal-container {
+  -webkit-transform: scale(1.1);
+  transform: scale(1.1);
+}
+
+.form-group {
+  margin-bottom: 15px;
+}
+
+label {
+  display: inline-block;
+  max-width: 100%;
+  margin-bottom: 5px;
+  font-weight: 700;
+}
+
+.form-control {
+  display: block;
+  width: 100%;
+  height: 34px;
+  padding: 6px 12px;
+  font-size: 14px;
+  line-height: 1.42857143;
+  color: #555;
+  background-color: #fff;
+  background-image: none;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075);
+  box-shadow: inset 0 1px 1px rgba(0,0,0,.075);
+  -webkit-transition: border-color ease-in-out .15s,-webkit-box-shadow ease-in-out .15s;
+  -o-transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
+  transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
+}
+
+.btn-primary {
+  color: #fff;
+  background-color: #337ab7;
+  border-color: #2e6da4;
+}
+
+.btn-danger {
+  color: #fff;
+  background-color: #d9534f;
+  border-color: #2e6da4;
+}
+
+.btn {
+  display: inline-block;
+  padding: 6px 12px;
+  margin-bottom: 0;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 1.42857143;
+  text-align: center;
+  white-space: nowrap;
+  vertical-align: middle;
+  -ms-touch-action: manipulation;
+  touch-action: manipulation;
+  cursor: pointer;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  background-image: none;
+  border: 1px solid transparent;
+  border-radius: 4px;
 }
 </style>

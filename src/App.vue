@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <h2>Containerized Golang and Vuejs</h2>
+    <h2>{{CONTAINERIZED_GOLANG_AND_VUEJS}}</h2>
     <router-view></router-view>
   </div>
 </template>
@@ -9,7 +9,9 @@
 export default {
   name: 'app',
   data () {
-    return {}
+    return {
+      CONTAINERIZED_GOLANG_AND_VUEJS: 'Containerized Golang and Vuejs'
+    }
   }
 }
 </script>

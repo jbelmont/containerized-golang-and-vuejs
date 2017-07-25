@@ -4,7 +4,7 @@ const test = require('ava')
 
 const mutations = require('../../src/store/mutations').default
 
-test('addUser should add User to state', t => {
+test('NEW_USER should add User to state', t => {
   const state = {
     users: [
       {
@@ -27,7 +27,7 @@ test('addUser should add User to state', t => {
     state,
     user
   }
-  const actual = mutations.addUser(args)
+  const actual = mutations.NEW_USER(args)
   const expected = [
     {
       id: 1,

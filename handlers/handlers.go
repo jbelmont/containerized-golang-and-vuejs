@@ -104,6 +104,12 @@ func AddUser(w http.ResponseWriter, r *http.Request) {
 		log.Fatal("error saving user")
 		return
 	}
+	connect := Connect()
+	key := "user:" + strconv.Itoa(u.ID)
+	_, err3 := connect.Do("HMSET", key, "id", u.ID, "firstname", u.FirstName, "lastname", u.LastName, "email", u.Email, "gender", u.Gender)
+	if err3 != nil {
+		log.Fatal("Redis did not save value")
+	}
 	code := struct {
 		StatusCode int
 	}{

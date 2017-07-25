@@ -2,16 +2,17 @@
 
 const test = require('ava')
 
-const mutations = require('../../src/store/mutations')
+const mutations = require('../../src/store/mutationTypes')
 
 test('mutations should render proper labels', t => {
-  t.plan(3)
+  t.plan(4)
   const expectedLabel = [
     'REMOVE_USER',
-    'ADD_USER',
-    'EDIT_USER'
+    'NEW_USER',
+    'EDIT_USER',
+    'GET_USER'
   ]
-  Object.keys(mutations.default).map((label, index, array) => {
+  Object.keys(mutations).map((label, index, array) => {
     t.is(label, expectedLabel[index])
   })
 })

@@ -3,7 +3,7 @@ const test = require('ava')
 const constants = require('../../src/constants').default
 
 test('constants should render proper values', t => {
-  t.plan(11)
+  t.plan(17)
   const constLabels = Object.keys(constants).map(labels => constants[labels])
   const labels = [
     'Dashboard',
@@ -16,7 +16,13 @@ test('constants should render proper values', t => {
     'Gender',
     'Email',
     'Add User',
-    'Remove User'
+    'Remove User',
+    'ID: ',
+    'First Name: ',
+    'Last Name: ',
+    'Gender: ',
+    'Email: ',
+    'Add a New User'
   ]
   constLabels.map((label, index, array) => {
     t.is(label, labels[index])
