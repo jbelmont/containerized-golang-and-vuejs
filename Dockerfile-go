@@ -11,7 +11,7 @@ WORKDIR ${appDir}
 ADD . ${appDir}
 
 RUN go get gopkg.in/mgo.v2
-RUN go get github.com/keimoon/gore
+RUN go get github.com/garyburd/redigo/redis
 RUN go get github.com/gorilla/mux
 RUN go get github.com/gorilla/handlers
 RUN go get github.com/jbelmont/containerized-golang-and-vuejs/routes

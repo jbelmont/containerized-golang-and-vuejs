@@ -87,3 +87,21 @@ func TestGetKeysWithPattern(t *testing.T) {
 		}
 	}
 }
+
+func TestDeleteKey(t *testing.T) {
+	SetKey("DoStuff", "blah:1")
+	reply, err := GetKey("DoStuff")
+	if err != nil {
+		t.Error("Did not get the key")
+	}
+	val, err2 := redis.String(reply, err)
+	assert.Equal(t, val, "blah:1")
+	if err2 != nil {
+		t.Error("Not able to return the string")
+	}
+	reply2, err3 := DeleteKey("DoStuff")
+	if err3 != nil {
+		t.Error("Not able to delete the key")
+	}
+	assert.Equal(t, reply2, int64(1))
+}

@@ -70,6 +70,15 @@ func GetKey(key string) (interface{}, error) {
 	return reply, err
 }
 
+func DeleteKey(key string) (interface{}, error) {
+	connect := Connect()
+	reply, err := connect.Do("DEL", key)
+	if err != nil {
+		log.Fatal(err, "Did not delete key")
+	}
+	return reply, err
+}
+
 // GetKeys using KEYS redis command with pattern
 func GetKeys(pattern string) (interface{}, error) {
 	connect := Connect()
