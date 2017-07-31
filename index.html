@@ -1,12 +1,154 @@
 <!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <title>Containerized Golang and Vuejs</title>
-    <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon.ico">
-  </head>
-  <body>
-    <div id="app"></div>
-    <script src="/dist/build.js"></script>
-  </body>
+	<html class="sl-root decks export offline loaded">
+	<head>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+		<title>Containerized Apps: Slides</title>
+		<meta name="description" content="Slides">
+
+		<link rel="stylesheet" type="text/css" href="lib/offline-v2.css">
+
+
+
+	</head>
+	<body class="reveal-viewport theme-font-montserrat theme-color-black-orange">
+		<div class="reveal">
+			<div class="slides">
+				<section data-id="0193c5d6b32b189a75c0ff90e04677f4"><div class="sl-block" data-block-type="text" style="width: 806px; left: 80px; top: 29px; height: auto;" data-block-id="9bb5fbaaf9774cb4e64d6dca1d015fb2"><div class="sl-block-content" data-placeholder-tag="h1" data-placeholder-text="Title Text" style="z-index: 11;">
+<h1>Containerized Apps</h1>
+</div></div>
+
+<div class="sl-block" data-block-type="text" style="width: 806px; left: 80px; top: 420px; height: auto;" data-block-id="47b63c30a13081743519347a8671693a"><div class="sl-block-content" data-placeholder-tag="h1" data-placeholder-text="Title Text" style="z-index: 13;">
+<h2>Software Engineer</h2>
+</div></div>
+<div class="sl-block" data-block-type="text" style="width: 851px; left: 67px; top: 556px; height: auto;" data-block-id="475c409f857672454b771ef5a801f857"><div class="sl-block-content" data-placeholder-tag="h1" data-placeholder-text="Title Text" style="z-index: 14;">
+<h2>Jean-Marcel Belmont</h2>
+</div></div>
+<div class="sl-block" data-block-type="image" data-block-id="96d4bb63bdf417fed3efc96728db27bd" style="min-width: 30px; min-height: 30px; width: 345px; height: 194px; left: 320px; top: 184px;"><div class="sl-block-content" style="z-index: 15;"><img data-natural-width="1920" data-natural-height="1080" style="" data-lazy-loaded="" data-src="containerized-apps/d4ad34796c4caeee2bbdf2b51c25c2e1.png"></div></div></section><section data-id="9636c970200a726d147cae88e585a127"><div class="sl-block" data-block-type="text" data-block-id="bfce2aefe30aeba7307bb4e114187b1a" style="height: auto; min-width: 30px; min-height: 30px; width: 754px; left: 126px; top: 49px;"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 11;">
+<h1>Docker Concepts</h1>
+</div></div>
+<div class="sl-block" data-block-type="text" data-block-id="be438f1742ab701ea9f5bc106070922a" style="height: auto; min-width: 30px; min-height: 30px; width: 960px; left: 0px; top: 116px;"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 12;" data-has-custom-html=""></div></div>
+<div class="sl-block" data-block-type="text" data-block-id="8bf364e00d3a5ceff0a9845f723ec061" style="height: auto; min-width: 30px; min-height: 30px; width: 600px; left: 180px; top: 230px;"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 13;">
+<h3><a href="https://github.com/jbelmont/docker-workshop/blob/master/docs/containers/README.md#definition-of-a-container" target="_blank">What is a Container?</a></h3>
+</div></div>
+<div class="sl-block" data-block-type="text" data-block-id="cb91f849b5acbbb8438f90ccaa3d5ff3" style="height: auto; min-width: 30px; min-height: 30px; width: 600px; left: 180px; top: 370px;"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 14;">
+<h3><a href="https://github.com/jbelmont/docker-workshop/tree/master/docs/dockerfile#what-is-a-dockerfile" target="_blank">Dockerfile</a></h3>
+</div></div>
+<div class="sl-block" data-block-type="text" data-block-id="49258112eab66b91398a80b66b414421" style="height: auto; min-width: 30px; min-height: 30px; width: 600px; left: 180px; top: 490px;"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 15;">
+<h3><a href="https://github.com/jbelmont/docker-workshop/blob/master/docs/docker-compose/README.md#what-is-docker-compose" target="_blank">Docker Compose</a></h3>
+</div></div></section><section data-id="61c38caa451550685758a6aed645b5a6"><div class="sl-block" data-block-type="text" data-block-id="e07f4ee537a1e23f1b0f5ab2631f83e5" style="height: auto; min-width: 30px; min-height: 30px; width: 960px; left: 0px; top: 49px;"><div class="sl-block-style" style="z-index: 11;"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 11;">
+<h1>Application Architecture</h1>
+</div></div></div>
+<div class="sl-block" data-block-type="image" data-block-id="ecec001bd582ada0493a08387ff1ec67" style="min-width: 30px; min-height: 30px; width: 179px; height: 230px; left: 190px; top: 190px;"><div class="sl-block-content" style="z-index: 12;"><img style="" data-natural-width="202" data-natural-height="259" data-lazy-loaded="" data-src="containerized-apps/0f2eb66917a69011ddb56ec943fbae6b.png"></div></div>
+<div class="sl-block" data-block-type="image" data-block-id="0a871c12b94d2df49c6b328803370462" style="min-width: 30px; min-height: 30px; width: 368px; height: 230px; left: 526px; top: 190px;"><div class="sl-block-content" style="z-index: 13;"><img data-natural-width="720" data-natural-height="450" style="" data-lazy-loaded="" data-src="containerized-apps/714e339d9ede2166fbd9b7213d7520cb.jpg"></div></div>
+<div class="sl-block" data-block-type="image" data-block-id="f58a1751413c9f3e9f92f7d83eec2248" style="min-width: 30px; min-height: 30px; width: 171px; height: 200px; left: 194px; top: 483px;"><div class="sl-block-content" style="z-index: 14;"><img data-natural-width="413" data-natural-height="484" style="" data-lazy-loaded="" data-src="containerized-apps/31fa96e4e2a91cfacf1dd58438dbcf33.png"></div></div>
+<div class="sl-block" data-block-type="image" data-block-id="f233b68b1ee3df6e44b63d9310aeb4fd" style="min-width: 30px; min-height: 30px; width: 360px; height: 120px; left: 526px; top: 500px;"><div class="sl-block-content" style="z-index: 15;"><img data-natural-width="1200" data-natural-height="401" style="" data-lazy-loaded="" data-src="containerized-apps/fb3ed4a1c3b084c15bfb35d3122abdcf.png"></div></div></section><section data-id="de5390a24ed3888b8e28a0873163e1e1"><div class="sl-block" data-block-type="text" data-block-id="642c23bfe000baa3617b7c1036b77544" style="height: auto; min-width: 30px; min-height: 30px; width: 960px; left: 0px; top: 45px;"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 11;">
+<h3>Application Orchestration with Docker</h3>
+</div></div>
+<div class="sl-block" data-block-type="text" data-block-id="c26e9f782749c76a36cebedf3ce9445e" style="height: auto; min-width: 30px; min-height: 30px; width: 600px; left: 174px; top: 171px;"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 12;">
+<p>2 Dockerfiles in the application</p>
+</div></div>
+<div class="sl-block" data-block-type="text" data-block-id="42ddf2f2d0f400a13f5dab728473a817" style="height: auto; min-width: 30px; min-height: 30px; width: 700px; left: 169px; top: 304px;"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 14;">
+<p>First Dockerfile is building Node.js Frontend</p>
+</div></div>
+<div class="sl-block" data-block-type="text" data-block-id="d609edd9967d068bff70ab9cf4e82705" style="height: auto; min-width: 30px; min-height: 30px; width: 685px; left: 169px; top: 420px;"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 15;">
+<p>Second Dockerfile is building Golang Backend</p>
+</div></div>
+<div class="sl-block" data-block-type="text" data-block-id="c9aa144e602a9b020f9d5ec557f8cf91" style="height: auto; min-width: 30px; min-height: 30px; width: 795px; left: 107px; top: 530px;"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 16;">
+<p>Docker Compose Yml Script orchestrates all the services</p>
+</div></div></section><section data-id="a66c43129a69fde2c52cf7425b72b7c4"><div class="sl-block" data-block-type="text" data-block-id="03d47f4e04aa5a95f1174579be8ad29d" style="height: auto; min-width: 30px; min-height: 30px; width: 600px; left: 180px; top: 51px;"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 11;">
+<p>Entry Point for Backend</p>
+</div></div>
+<div class="sl-block" data-block-type="text" data-block-id="b6979a94d6d9502162981c3593d6ebd8" style="height: auto; min-width: 30px; min-height: 30px; width: 400px; left: 80px; top: 121px;"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 12;">
+<p>main.go</p>
+</div></div>
+<div class="sl-block" data-block-type="text" data-block-id="44d20e9d2abee30d52e314573bd5e511" style="height: auto; min-width: 30px; min-height: 30px; width: 600px; left: 188px; top: 331px;"><div class="sl-block-style" style="z-index: 13;"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 13;">
+<p>Entry Point for FrontEnd</p>
+</div></div></div>
+<div class="sl-block" data-block-type="text" data-block-id="ba1825da2daae9999c217cd7c0dad341" style="height: auto; min-width: 30px; min-height: 30px; width: 960px; left: 1px; top: 413px;"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 14;">
+<p>In the package.json there is a script starting webpack-dev-server</p>
+</div></div>
+<div class="sl-block" data-block-type="text" data-block-id="8126ac2256d52170b84f17a3138a3345" style="height: auto; min-width: 30px; min-height: 30px; width: 400px; left: 512px; top: 121px;"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 15;">
+<p>{routes,handlers}</p>
+</div></div>
+<div class="sl-block" data-block-type="text" data-block-id="ac86fac918087723f00a26985fe72bbc" style="height: auto; min-width: 30px; min-height: 30px; width: 719px; left: 121px; top: 521px;"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 16;">
+<p>The script invoked is called <span style="color:#9cdcfe">webpack:docker</span></p>
+</div></div>
+<div class="sl-block" data-block-type="text" data-block-id="24108aebf55c31871eea0138dc384871" style="height: auto; min-width: 30px; min-height: 30px; width: 732px; left: 139px; top: 222px;"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 18;">
+<p>The script invoked is called <span style="color:#ce9178">go run main.go data.go</span></p>
+</div></div></section><section data-id="8d18332811fe44b1b4bd695a69b14307"><div class="sl-block" data-block-type="text" data-block-id="c074da836c21f286d1ec382fcade5a19" style="height: auto; min-width: 30px; min-height: 30px; width: 600px; left: 189px; top: 70px;"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 11;">
+<p>Demo Time !!</p>
+</div></div>
+<div class="sl-block" data-block-type="iframe" data-block-id="59b74ea67963884c169d54dc649bcdd6" style="min-width: 30px; min-height: 30px; width: 608px; height: 385px; left: 160px; top: 140px;"><div class="sl-block-content" style="z-index: 12;"><iframe webkitallowfullscreen="" mozallowfullscreen="" allowfullscreen="" sandbox="allow-forms allow-scripts allow-popups allow-same-origin allow-pointer-lock" data-src="https://giphy.com/embed/l4FGz12XAUdjuskwg"></iframe></div></div>
+<div class="sl-block" data-block-type="text" data-block-id="d96cec0a16a21e1cd8477560cd14a07c" style="height: auto; min-width: 30px; min-height: 30px; width: 600px; left: 200px; top: 591px;"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 13;">
+<p>Containers</p>
+</div></div></section><section data-id="18d02e0d320d4c1934cfaaf96f8e7611"><div class="sl-block" data-block-type="text" data-block-id="d3851de7ba68ad266f40ba2c94401975" style="height: auto; min-width: 30px; min-height: 30px; width: 660px; left: 181px; top: 210px;"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 11;">
+<h3 style="text-align: left;">Follow me at Github <a href="https://github.com/jbelmont" target="_blank">jbelmont</a> </h3>
+</div></div>
+<div class="sl-block" data-block-type="text" style="height: auto; min-width: 30px; min-height: 30px; width: 699px; left: 181px; top: 350px;" data-block-id="8acb66b827ecd729127916f9a2296285"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 12;">
+<h3 style="text-align: left;">Follow me at Twitter <a href="https://twitter.com/jbelmont80" target="_blank">@</a><a href="https://twitter.com/jbelmont80" target="_blank">jbelmont</a><a href="https://twitter.com/jbelmont80" target="_blank">80</a> </h3>
+</div></div>
+<div class="sl-block" data-block-type="text" data-block-id="e5bbef6d43d59b2060caddbcaf574e7d" style="height: auto; min-width: 30px; min-height: 30px; width: 960px; left: 0px; top: 49px;"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 13;">
+<h1>How to Find me?</h1>
+</div></div>
+<div class="sl-block" data-block-type="text" data-block-id="9dc6cfeec49151a32c041a99202b351c" style="height: auto; min-width: 30px; min-height: 30px; width: 680px; left: 181px; top: 490px;"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 14;">
+<h3 style="text-align: left;"><a href="https://www.meetup.com/Code-Craftsmanship-Saturdays/" target="_blank">Code Craftsmanship Saturdays</a></h3>
+</div></div></section><section data-id="c02d233107f357e25f7222d1036312d6"><div class="sl-block" data-block-type="text" data-block-id="2020fedb97d8b08a5d934e6a62257c9b" style="height: auto; min-width: 30px; min-height: 30px; width: 600px; left: 178px; top: 70px;"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 11;">
+<h1>Questions?</h1>
+</div></div>
+<div class="sl-block" data-block-type="text" data-block-id="b4ca66c1e91152b5e6a2942979cedfe6" style="height: auto; min-width: 30px; min-height: 30px; width: 843px; left: 72px; top: 280px;"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 12;">
+<h3><a href="https://github.com/jbelmont/containerized-golang-and-vuejs" target="_blank">Containerized Golang and Vuejs Repo</a></h3>
+</div></div></section>
+			</div>
+		</div>
+
+		<script>
+			var SLConfig = {"deck": {"id":1046659,"slug":"containerized-apps","title":"Containerized Apps","description":"","width":960,"height":700,"visibility":"all","published_at":"2017-07-26T11:39:27.734Z","sanitize_messages":null,"thumbnail_url":"https://s3.amazonaws.com/media-p.slid.es/thumbnails/a43d2eb032122c366ae631851d443123/thumb.jpg?1275148769","view_count":18,"user":{"id":727273,"username":"jbelmont","name":null,"description":null,"thumbnail_url":"https://www.gravatar.com/avatar/7a971b650555b4ab1745271d157e84a9?s=140\u0026d=https%3A%2F%2Fs3.amazonaws.com%2Fstatic.slid.es%2Fimages%2Fdefault-profile-picture.png","paid":true,"pro":true,"lite":false,"team_id":null,"settings":{"id":577206,"present_controls":true,"present_upsizing":true,"present_pointer":false,"present_notes":true}},"background_transition":"slide","transition":"slide","theme_id":null,"theme_font":"montserrat","theme_color":"black-orange","auto_slide_interval":0,"comments_enabled":true,"forking_enabled":false,"rolling_links":false,"center":false,"should_loop":false,"share_notes":null,"slide_number":null,"rtl":false,"version":2,"collaborative":null,"deck_user_editor_limit":1,"data_updated_at":1501023088159,"font_typekit":null,"font_google":null,"notes":{}}};
+
+
+			// Use local fonts
+			SLConfig.fonts_url = 'lib/fonts/';
+		</script>
+
+		<script src="lib/head.min.js"></script>
+		<script src="lib/reveal.min.js"></script>
+		<script src="lib/offline.js"></script>
+
+		<!-- Initialize the presentation -->
+		<script>
+			Reveal.initialize({
+				width: 960,
+				height: 700,
+				margin: 0.05,
+
+				controls: true,
+				progress: true,
+				history: true,
+				mouseWheel: false,
+				showNotes: false,
+				slideNumber: false,
+
+				autoSlide: 0 || 0,
+				autoSlideStoppable: true,
+
+				center: false,
+				loop: false,
+				rtl: false,
+
+				transition: "slide",
+				backgroundTransition: "slide",
+
+				dependencies: [
+					{ src: 'lib/reveal-plugins/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'lib/reveal-plugins/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'lib/reveal-plugins/highlight/highlight.js', async: true, callback: function() { hljs.initHighlighting(); hljs.initHighlightingOnLoad(); } },
+					{ src: 'lib/reveal-plugins/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }
+				]
+			});
+		</script>
+
+		
+
+	</body>
 </html>
