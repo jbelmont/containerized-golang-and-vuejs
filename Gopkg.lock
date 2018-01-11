@@ -29,16 +29,13 @@
   version = "v1.6.0"
 
 [[projects]]
-  name = "github.com/mattn/goveralls"
-  packages = ["."]
-  revision = "9d621f6940639bf287ecbb6f585a2c26eeba3bbe"
-  version = "v0.0.1"
-
-[[projects]]
-  name = "github.com/pborman/uuid"
-  packages = ["."]
-  revision = "e790cca94e6cc75c7064b1332e63811d4aae1a53"
-  version = "v1.1"
+  branch = "master"
+  name = "github.com/modocache/gover"
+  packages = [
+    ".",
+    "gover"
+  ]
+  revision = "b58185e213c533169f76aa366e6c68fe56f2881b"
 
 [[projects]]
   name = "github.com/pmezard/go-difflib"
@@ -51,12 +48,6 @@
   packages = ["assert"]
   revision = "b91bfb9ebec76498946beb6af7c0230c7cc7ba6c"
   version = "v1.2.0"
-
-[[projects]]
-  branch = "master"
-  name = "golang.org/x/tools"
-  packages = ["cover"]
-  revision = "8cab8a1319f0be9798e7fe78b15da75e5f94b2e9"
 
 [[projects]]
   branch = "v2"
@@ -73,6 +64,6 @@
 [solve-meta]
   analyzer-name = "dep"
   analyzer-version = 1
-  inputs-digest = "fa204a7d4dacbb452e2e6d1f765b1b036dfb8881b71bc1ac75b711499e69684f"
+  inputs-digest = "5310f31bde4eafad39ede6aeb97dbeda65e9e737cd79b2ddceeb00fdee444c79"
   solver-name = "gps-cdcl"
   solver-version = 1

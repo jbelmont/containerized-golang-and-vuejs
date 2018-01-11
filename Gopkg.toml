@@ -39,3 +39,11 @@
 [[constraint]]
   name = "github.com/mattn/goveralls"
   version = "0.0.1"
+
+[[constraint]]
+  branch = "master"
+  name = "golang.org/x/tools"
+
+[[constraint]]
+  branch = "master"
+  name = "github.com/modocache/gover"
