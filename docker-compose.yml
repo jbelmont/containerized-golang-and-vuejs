@@ -7,6 +7,7 @@ services:
       - ./mongo_data:/data/db
   redis:
     image: redis:3.2.9
+    command: redis-server
     volumes:
       - ./redis.conf:/usr/local/etc/redis/redis.conf
     ports:
@@ -33,7 +34,7 @@ services:
     environment:
       NODE_ENV: testing
     command:
-      /bin/sh -c "./node_modules/.bin/ava test/unit/*.js"
+      /bin/sh -c "./node_modules/.bin/ava test/component/*.js test/unit/*.js"
   backend:
     build:
       context: .
