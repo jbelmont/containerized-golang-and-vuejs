@@ -1,6 +1,6 @@
 {
   "name": "containerized-golang-and-vuejs",
-  "version": "1.0.0",
+  "version": "2.0.0",
   "main": "index.js",
   "repository": "https://github.com/jbelmont/containerized-golang-and-vuejs.git",
   "author": "Jean-Marcel Belmont <marcelbelmont@gmail.com>",
