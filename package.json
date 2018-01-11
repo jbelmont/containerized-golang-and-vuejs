@@ -12,7 +12,7 @@
     "build": "docker-compose build",
     "lint": "eslint --ext .js .",
     "lint:fix": "eslint --fix --ext .js .",
-    "go": "go run main.go data.go",
+    "go": "go run *.go",
     "browser": "node browser.js",
     "dev": "docker-compose up frontend backend db redis",
     "dev:server": "npm run go & npm run webpack",

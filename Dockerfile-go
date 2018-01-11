@@ -3,20 +3,14 @@ FROM golang:1.8.3
 LABEL maintainer "marcelbelmont@gmail.com"
 
 # Set Environment variables
-ENV appDir /var/www/app
+ENV appDir /go/src/github.com/jbelmont/containerized-golang-and-vuejs
 
 # Set the work directory
 RUN mkdir -p ${appDir}
 WORKDIR ${appDir}
 ADD . ${appDir}
 
-RUN go get gopkg.in/mgo.v2
-RUN go get github.com/garyburd/redigo/redis
-RUN go get github.com/gorilla/mux
-RUN go get github.com/gorilla/handlers
-RUN go get github.com/jbelmont/containerized-golang-and-vuejs/routes
-RUN go get github.com/jbelmont/containerized-golang-and-vuejs/handlers
-RUN go get github.com/jbelmont/containerized-golang-and-vuejs/model
-RUN go get github.com/jbelmont/containerized-golang-and-vuejs/redis
+RUN go get -u github.com/golang/dep/cmd/dep && \
+    dep ensure
 
 RUN go build

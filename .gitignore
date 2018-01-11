@@ -42,3 +42,6 @@ key.pem
 
 # Mongo data
 /mongo_data
+
+# Go dependencies
+/vendor
