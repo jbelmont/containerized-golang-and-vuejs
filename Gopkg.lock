@@ -23,6 +23,12 @@
   version = "v1.6.0"
 
 [[projects]]
+  branch = "master"
+  name = "golang.org/x/net"
+  packages = ["context"]
+  revision = "ab555f366c4508dbe0802550b1b20c46c5c18aa0"
+
+[[projects]]
   branch = "v2"
   name = "gopkg.in/mgo.v2"
   packages = [
@@ -34,9 +40,15 @@
   ]
   revision = "3f83fa5005286a7fe593b055f0d7771a7dce4655"
 
+[[projects]]
+  branch = "v2"
+  name = "gopkg.in/tomb.v2"
+  packages = ["."]
+  revision = "d5d1b5820637886def9eef33e03a27a9f166942c"
+
 [solve-meta]
   analyzer-name = "dep"
   analyzer-version = 1
-  inputs-digest = "2645eb0cd785925bf8997aeb2688e205775963a6304975c34aea8eda3e4b2740"
+  inputs-digest = "2a4d7f80b8c2acf480753555afa6526398e1461deb0f4aac1b8c2ff60a459472"
   solver-name = "gps-cdcl"
   solver-version = 1

@@ -47,3 +47,7 @@
 [[constraint]]
   branch = "master"
   name = "github.com/sozorogami/gover"
+
+[[constraint]]
+  branch = "v2"
+  name = "gopkg.in/tomb.v2"
