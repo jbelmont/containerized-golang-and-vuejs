@@ -29,15 +29,6 @@
   version = "v1.6.0"
 
 [[projects]]
-  branch = "master"
-  name = "github.com/modocache/gover"
-  packages = [
-    ".",
-    "gover"
-  ]
-  revision = "b58185e213c533169f76aa366e6c68fe56f2881b"
-
-[[projects]]
   name = "github.com/pmezard/go-difflib"
   packages = ["difflib"]
   revision = "792786c7400a136282c1664665ae0a8db921c6c2"
@@ -64,6 +55,6 @@
 [solve-meta]
   analyzer-name = "dep"
   analyzer-version = 1
-  inputs-digest = "5310f31bde4eafad39ede6aeb97dbeda65e9e737cd79b2ddceeb00fdee444c79"
+  inputs-digest = "3b416b003bbf7c40b1f96b9aeec3b9426e342bf2de6e1613e49fa2531af39d64"
   solver-name = "gps-cdcl"
   solver-version = 1
