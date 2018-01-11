@@ -1,3 +1,6 @@
+[![Build Status](https://travis-ci.org/jbelmont/containerized-golang-and-vuejs.svg?branch=master)](https://travis-ci.org/jbelmont/containerized-golang-and-vuejs)
+[![Coverage Status](https://coveralls.io/repos/github/jbelmont/containerized-golang-and-vuejs/badge.svg?branch=master)](https://coveralls.io/github/jbelmont/containerized-golang-and-vuejs?branch=master)
+
 # Containerized Golang and Vuejs applications
 
 ## Sections:
