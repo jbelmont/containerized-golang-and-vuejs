@@ -11,7 +11,6 @@ WORKDIR ${appDir}
 ADD . ${appDir}
 
 COPY Gopkg.toml Gopkg.lock ./
-COPY /usr/local/etc/mongod.conf ./
 
 RUN go get -u github.com/golang/dep/cmd/dep && \
     dep ensure

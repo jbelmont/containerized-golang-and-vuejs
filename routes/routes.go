@@ -64,13 +64,13 @@ var routes = Routes{
 	},
 	Route{
 		"POST",
-		"/addUser",
+		"/users",
 		"AddUser",
 		handlers.AddUser,
 	},
 	Route{
-		"POST",
-		"/removeUser",
+		"DELETE",
+		"/users/{id:[0-9]+}",
 		"RemoveUser",
 		handlers.DeleteUserByID,
 	},

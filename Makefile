@@ -12,6 +12,21 @@ package:	compile
 compile:	main.go
 						CGO_ENABLED=0 go build -i -o ${BIN_DIR} main.go
 
+dev-deps:
+					docker-compose pull
+
+build-dev:
+						docker-compose build
+
+dev:
+			docker-compose up frontend backend db redis
+
+destroy-dev:
+							docker-compose down
+
+show-containers:
+									docker-compose ps
+
 test:
 				go test ./... -v
 

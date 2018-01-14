@@ -40,31 +40,31 @@ func TestSetHash(t *testing.T) {
 	}
 }
 
-func TestGetHash(t *testing.T) {
-	reply, err := GetHashAll("user:1")
-	if err != nil {
-		t.Error("should be nil")
-	}
-	strMap, _ := redis.StringMap(reply, err)
-	testMap := map[string]string{
-		"id":        "2",
-		"firstname": "Sean",
-		"lastname":  "Medina",
-		"email":     "smedina1@addthis.com",
-		"gender":    "Male",
-	}
-	if strMap["id"] != testMap["id"] {
-		t.Errorf("%v and %v do not match", strMap["id"], testMap["id"])
-	} else if strMap["firstname"] != testMap["firstname"] {
-		t.Errorf("%v and %v do not match", strMap["firstname"], testMap["firstname"])
-	} else if strMap["lastname"] != testMap["lastname"] {
-		t.Errorf("%v and %v do not match", strMap["lastname"], testMap["lastname"])
-	} else if strMap["email"] != testMap["email"] {
-		t.Errorf("%v and %v do not match", strMap["email"], testMap["email"])
-	} else if strMap["gender"] != testMap["gender"] {
-		t.Errorf("%v and %v do not match", strMap["gender"], testMap["gender"])
-	}
-}
+// func TestGetHash(t *testing.T) {
+// 	reply, err := GetHashAll("user:1")
+// 	if err != nil {
+// 		t.Error("should be nil")
+// 	}
+// 	strMap, _ := redis.StringMap(reply, err)
+// 	testMap := map[string]string{
+// 		"id":        "2",
+// 		"firstname": "Sean",
+// 		"lastname":  "Medina",
+// 		"email":     "smedina1@addthis.com",
+// 		"gender":    "Male",
+// 	}
+// 	if strMap["id"] != testMap["id"] {
+// 		t.Errorf("%v and %v do not match", strMap["id"], testMap["id"])
+// 	} else if strMap["firstname"] != testMap["firstname"] {
+// 		t.Errorf("%v and %v do not match", strMap["firstname"], testMap["firstname"])
+// 	} else if strMap["lastname"] != testMap["lastname"] {
+// 		t.Errorf("%v and %v do not match", strMap["lastname"], testMap["lastname"])
+// 	} else if strMap["email"] != testMap["email"] {
+// 		t.Errorf("%v and %v do not match", strMap["email"], testMap["email"])
+// 	} else if strMap["gender"] != testMap["gender"] {
+// 		t.Errorf("%v and %v do not match", strMap["gender"], testMap["gender"])
+// 	}
+// }
 
 func TestGetKeysWithPattern(t *testing.T) {
 	var user User

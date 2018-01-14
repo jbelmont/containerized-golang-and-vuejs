@@ -129,7 +129,7 @@ export default {
   },
   methods: {
     getUsers: function () {
-      this.$http.get('api/v1/users').then(function (data) {
+      this.$http.get('/api/v1/users').then(function (data) {
         this.users = data.body
       }, function (err) {
         console.error(err)
@@ -161,7 +161,7 @@ export default {
           'Content-Type': 'application/json'
         }
       }
-      this.$http.post('/api/v1/addUser', addUser, options)
+      this.$http.post('/api/v1/users', addUser, options)
       .then(function() {
         addUser["id"] = addUser["id"].toString()
         const users2 = this.users
@@ -170,9 +170,7 @@ export default {
       }.bind(this))
     },
     removeUser: function (event) {
-      const body = {
-        id: Number(event.currentTarget.dataset["id"])
-      }
+      const id = +event.currentTarget.dataset["id"]
       const index = event.currentTarget.dataset["index"]
       const options = {
         headers: {
@@ -180,14 +178,14 @@ export default {
           'Content-Type': 'application/json'
         }
       }
-      this.$http.post('/api/v1/removeUser', body, options)
-      .then(function() {
-        const users3 = [
-          ...this.users.slice(0, index - 1),
-          ...this.users.slice(index, this.users.length - 1)
-        ]
-        this.users = users3
-      }.bind(this))
+      this.$http.delete(`/api/v1/users/${id}`, options)
+        .then(function() {
+          const users3 = [
+            ...this.users.slice(0, index - 1),
+            ...this.users.slice(index, this.users.length - 1)
+          ]
+          this.users = users3
+        }.bind(this))
     }
   }
 }

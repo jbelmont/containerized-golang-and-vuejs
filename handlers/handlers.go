@@ -6,6 +6,7 @@ import (
 	"log"
 	"net/http"
 	"os"
+	"path"
 	"strconv"
 
 	"gopkg.in/mgo.v2/bson"
@@ -147,41 +148,24 @@ func GetUserByID(w http.ResponseWriter, r *http.Request) {
 
 // DeleteUserByID deletes a user by id
 func DeleteUserByID(w http.ResponseWriter, r *http.Request) {
-	type Payload struct {
-		ID int `json:"id"`
-	}
-	var payload Payload
-	err := json.NewDecoder(r.Body).Decode(&payload)
-	fmt.Println(payload)
+	id, err := strconv.Atoi(path.Base(r.URL.Path))
 	if err != nil {
-		http.Error(w, err.Error(), 500)
-		return
+		log.Fatal("Error trying to convert id to int")
 	}
 	context := model.GetContext()
 	c := context.DBCollection()
-	err2 := c.Remove(bson.M{"id": payload.ID})
-	if err2 != nil {
-		http.Error(w, err2.Error(), 500)
+	removeUserErr := c.Remove(bson.M{"id": id})
+	if removeUserErr != nil {
+		http.Error(w, removeUserErr.Error(), 500)
 		return
 	}
 	connect := Connect()
-	key := "user:" + strconv.Itoa(payload.ID)
-	_, err3 := connect.Do("DEL", key)
-	if err3 != nil {
-		http.Error(w, err3.Error(), 500)
-		return
-	}
-	code := struct {
-		StatusCode int
-	}{
-		204,
-	}
-	payload2, err4 := json.Marshal(code)
-	if err4 != nil {
-		http.Error(w, err4.Error(), 500)
+	key := "user:" + strconv.Itoa(id)
+	_, deleteRedisUser := connect.Do("DEL", key)
+	if deleteRedisUser != nil {
+		http.Error(w, deleteRedisUser.Error(), 500)
 		return
 	}
 	w.Header().Set("Content-Type", "application/json")
-	w.WriteHeader(http.StatusOK)
-	w.Write(payload2)
+	w.WriteHeader(http.StatusNoContent)
 }
