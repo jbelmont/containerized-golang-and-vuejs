@@ -25,7 +25,8 @@
     "docs:prepare": "gitbook install",
     "docs:build": "npm run docs:prepare && rm -rf _book && gitbook build",
     "docs:watch": "npm run docs:prepare && gitbook serve",
-    "docs:publish": "npm run docs:build && cd _book && git init && git commit --allow-empty -m 'Update docs' && git checkout -b gh-pages && touch .nojekyll && git add . && git commit -am 'Update docs' && git push git@github.com:jbelmont/containerized-golang-and-vuejs.git gh-pages --force"
+    "docs:publish": "npm run docs:build && cd _book && git init && git commit --allow-empty -m 'Update docs' && git checkout -b gh-pages && touch .nojekyll && git add . && git commit -am 'Update docs' && git push git@github.com:jbelmont/containerized-golang-and-vuejs.git gh-pages --force",
+    "cypress:open": "cypress open"
   },
   "devDependencies": {
     "autoprefixer": "^7.1.1",
@@ -39,6 +40,7 @@
     "browser-env": "^3.1.0",
     "cross-env": "^3.0.0",
     "css-loader": "^0.25.0",
+    "cypress": "^2.1.0",
     "eslint": "^3.19.0",
     "eslint-config-standard": "^10.2.1",
     "eslint-friendly-formatter": "^3.0.0",
