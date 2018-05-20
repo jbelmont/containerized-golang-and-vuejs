@@ -7,13 +7,16 @@ module.exports = {
   env: {
     browser: true,
     commonjs: true,
-    node: true
+    node: true,
+    mocha: true,
+    'cypress/globals': true
   },
   // https://github.com/feross/standard/blob/master/RULES.md#javascript-standard-style
   extends: ['plugin:vue-libs/recommended'],
   // required to lint *.vue files
   plugins: [
-    'html'
+    'html',
+    'cypress'
   ],
   // add your custom rules here
   'rules': {
