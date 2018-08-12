@@ -45,3 +45,6 @@ key.pem
 
 # Go dependencies
 /vendor
+
+# Cypress files that are large
+cypress/videos
